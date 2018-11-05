@@ -1,0 +1,177 @@
+question 1.
+
+import java.util.*;
+class Question1
+{
+     static int search(int arr[], int l, int r, int x)
+     {
+          if (r < l)
+             return -1;
+          if (arr[l] == x)
+             return l;
+          return search(arr, l+1, r, x);
+     }
+    
+     public static void main(String[] args) 
+     {
+       Scanner s=new Scanner(System.in);
+       System.out.print("Enter the Size of Array : "); 
+       int N=s.nextInt();
+        int[] arr=new int[N];
+       System.out.print("Enter the elements of Array : ");
+       for(int i=0;i<N;i++)
+        {
+          arr[i]=s.nextInt();
+        }
+       System.out.print("Enter the element to search : ");
+       int M=s.nextInt();
+        int index = search(arr, 0, N-1, M);
+         if (index != -1)
+           System.out.println("Element " + M + " is present");
+        else
+            System.out.println("Element " + M + " is not present");
+        }
+ }
+----------------
+
+question 2
+
+import java.util.*;
+class Question2 {
+static void reverse(int arr[],int i, int j)
+{
+  int temp;        
+  if(i < j)
+  {
+    temp = arr[i]; 
+    arr[i] = arr[j];
+    arr[j] = temp;
+    reverse(arr, ++i, --j);
+  } 
+}     
+ public static void main(String args[]) {
+       Scanner s=new Scanner(System.in);
+       System.out.print("Enter the Size of Array : "); 
+       int N=s.nextInt();
+        int[] arr=new int[N];
+       System.out.print("Enter the elements of Array : ");
+       for(int i=0;i<N;i++)
+        {
+          arr[i]=s.nextInt();
+        }  
+        reverse(arr, 0, N-1);
+        System.out.print("Reversed array is \n");
+        System.out.println(Arrays.toString(arr)); 
+        
+    }
+}
+------------
+question 3 
+
+import java.util.*;
+class Question3
+{ 
+    static int fib(int n) 
+    { 
+    if (n <= 1) 
+       return n; 
+    else    
+    return fib(n-1) + fib(n-2); 
+    } 
+       
+    public static void main (String args[]) 
+    { 
+    Scanner s=new Scanner(System.in);
+    int N=s.nextInt();
+    System.out.println(fib(N)); 
+    } 
+} 
+---------------
+question 4.
+
+import java.util.*;
+class Question4{
+  static int power(int x, int y){
+        if (y != 0)
+            return (x * power(x,y- 1));
+        else
+            return 1;
+    }
+    public static void main(String[] args) {
+    Scanner s=new Scanner(System.in);
+    int x=s.nextInt();
+    int y=s.nextInt();      
+    int result = power(x,y);
+    System.out.printf("%d^%d = %d", x, y, result);
+    }
+}
+--------------------------
+question 5
+
+import java.util.*;
+class Question5{
+static int add(int n)
+    { 
+        if (n == 0)
+            return 0;
+        return (n % 10 + add(n / 10));
+    }
+public static void main(String[] args) {
+Scanner s=new Scanner(System.in);
+System.out.print("Enter the Number : ");
+String str =s.next();
+int y=Integer.parseInt(str);
+int SUM=add(y);
+System.out.print("Sum of Digit is : " + SUM);
+}
+}
+------------
+question 6.
+
+import java.util.*;
+class Question6{
+public static String removeDups(String s)
+{
+    if ( s.length() <= 1 ) return s;
+    if( s.substring(1,2).equals(s.substring(0,1)) ) 
+    return removeDups(s.substring(1));
+    else 
+    return s.substring(0,1) + removeDups(s.substring(1));
+}
+
+public static void main(String[] args) {
+Scanner s=new Scanner(System.in);
+System.out.print("Enter the String : ");
+String str =s.next();
+String str2=removeDups(str);
+System.out.print(str2);
+}
+}
+
+-------------------------
+question 7.
+
+import java.util.*;
+class Question7{
+static  boolean balance(String s, int start, int end)
+{
+   
+   if (start == s.length()) return end == 0;
+   if (end<0) return false;
+   if (s.charAt(start) == '(' || s.charAt(start) == '{' || s.charAt(start) == '[')
+     return balance(s, start+1, end+1);
+   if (s.charAt(start) == ')' || s.charAt(start) == '}' || s.charAt(start) == ']')
+     return balance(s, start+1, end-1);
+   return balance(s, start+1, end );
+}
+public static void main(String[] args){
+Scanner a=new Scanner(System.in);
+String s=a.next();
+int start=0,end=0;
+boolean flag=balance(s,start,end);
+if(flag==true)
+System.out.print("Balanced");
+else
+System.out.print("Not Balanced");
+}
+}
